@@ -1,0 +1,123 @@
+<div class="row zona">
+    <h4 class="titulo">Nuevo cliente</h4>
+</div>
+
+<div class="zona">
+    <form [formGroup]="form_nuevo_cliente">
+        <div class="form-row justify-content-center">
+            <div class="form-group col-md-3">
+                <label for="nombre">Nombre(s) *</label>
+                <input type="text" formControlName="nombre" class="form-control form-control-sm" id="nombre">
+                <div *ngIf="form_nuevo_cliente.controls['nombre'].valid && form_nuevo_cliente.controls['nombre'].touched"
+                    class="text-success text-right">
+                    Genial
+                </div>
+                <div *ngIf="form_nuevo_cliente.controls['nombre'].invalid && form_nuevo_cliente.controls['nombre'].touched"
+                    class="text-danger text-right">
+                    <span *ngIf="form_nuevo_cliente.controls['nombre'].errors.required">Nombre requerido</span>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="apellido">Apellidos *</label>
+                <input type="text" formControlName="apellido" class="form-control form-control-sm" id="apellido">
+                <div *ngIf="form_nuevo_cliente.controls['apellido'].valid && form_nuevo_cliente.controls['apellido'].touched"
+                    class="text-success text-right">
+                    Genial
+                </div>
+                <div *ngIf="form_nuevo_cliente.controls['apellido'].invalid && form_nuevo_cliente.controls['apellido'].touched"
+                    class="text-danger text-right">
+                    <span *ngIf="form_nuevo_cliente.controls['apellido'].errors.required">Apellido requerido</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row justify-content-center">
+            <div class="form-group col-md-3">
+                <label for="correo">Correo *</label>
+                <input type="email" formControlName="correo" class="form-control form-control-sm" id="correo">
+                <div *ngIf="form_nuevo_cliente.controls['correo'].valid && form_nuevo_cliente.controls['correo'].touched"
+                    class="text-success text-right">
+                    Genial
+                </div>
+                <div *ngIf="form_nuevo_cliente.controls['correo'].invalid && form_nuevo_cliente.controls['correo'].touched"
+                    class="text-danger text-right">
+                    <span *ngIf="form_nuevo_cliente.controls['correo'].errors.required">Correo requerido</span>
+                    <span *ngIf="form_nuevo_cliente.controls['correo'].errors.email">Correo inválido</span>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="ine">INE *</label>
+                <input type="text" formControlName="ine" class="form-control form-control-sm" id="ine">
+                <div *ngIf="form_nuevo_cliente.controls['ine'].valid && form_nuevo_cliente.controls['ine'].touched"
+                    class="text-success text-right">
+                    Genial
+                </div>
+                <div *ngIf="form_nuevo_cliente.controls['ine'].invalid && form_nuevo_cliente.controls['ine'].touched"
+                    class="text-danger text-right">
+                    <span *ngIf="form_nuevo_cliente.controls['ine'].errors.required">INE requerido</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row justify-content-center">
+            <div class="form-group col-md-3">
+                <label for="telefono">Teléfono *</label>
+                <input type="number" formControlName="telefono" class="form-control form-control-sm" id="telefono">
+                <div *ngIf="form_nuevo_cliente.controls['telefono'].valid && form_nuevo_cliente.controls['telefono'].touched"
+                    class="text-success text-right">
+                    Genial
+                </div>
+                <div *ngIf="form_nuevo_cliente.controls['telefono'].invalid && form_nuevo_cliente.controls['telefono'].touched"
+                    class="text-danger text-right">
+                    <span *ngIf="form_nuevo_cliente.controls['telefono'].errors.required">Teléfono requerido</span>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="fecha_nacimiento">Fecha de nacimiento *</label>
+                <input type="date" formControlName="fecha_nacimiento" class="form-control form-control-sm" id="fecha">
+                <div *ngIf="form_nuevo_cliente.controls['fecha_nacimiento'].valid && form_nuevo_cliente.controls['fecha_nacimiento'].touched"
+                    class="text-success text-right">
+                    Genial
+                </div>
+                <div *ngIf="form_nuevo_cliente.controls['fecha_nacimiento'].invalid && form_nuevo_cliente.controls['fecha_nacimiento'].touched"
+                    class="text-danger text-right">
+                    <span *ngIf="form_nuevo_cliente.controls['fecha_nacimiento'].errors.required">Fecha de nacimiento
+                        requerida</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row justify-content-center">
+            <div class="form-group col-6">
+                <label for="imagen">Imagen *</label>
+                <div class="custom-file">
+                    <input type="file" formControlName="imagen" (change)="uploadFile($event)" class="custom-file-input"
+                        id="imagen" accept=".jpg,.png" #inputImagen>
+                    <label *ngIf="!imagen_cliente" class="custom-file-label" for="imagen">Elige una imagen</label>
+                    <label *ngIf="imagen_cliente" class="custom-file-label" for="imagen">{{imagen_cliente.name}}</label>
+                    <div *ngIf="imagen_cliente" class="text-success text-right">
+                        {{ imagen_cliente.size/1024 | number: '1.0-2' }} KB <i (click)="resetImagen()"
+                            class="fa fa-times click" aria-hidden="true"></i>
+                    </div>
+                    <div *ngIf="form_nuevo_cliente.controls['imagen'].invalid && form_nuevo_cliente.controls['imagen'].touched"
+                        class="text-danger text-right">
+                        <span *ngIf="form_nuevo_cliente.controls['imagen'].errors.required">Imagen requerida</span>
+                    </div>
+                </div>
+                <div *ngIf="subiendo_imagen" class="progress">
+                    <div class="progress-bar progress-bar-animated progress-bar-striped bg-success" role="progressbar"
+                        [style.width.%]="porcentaje_imagen" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                        {{porcentaje_imagen}}%</div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="button" [disabled]="form_nuevo_cliente.invalid || !imagen_cliente" (click)="enviar()"
+                class="btn btn-primary col-md-3 botones"><i class="fas fa-check-circle"></i> Nuevo</button>
+            <button type="button" (click)="regresar()" class="btn btn-warning col-md-3 botones"><i
+                    class="fas fa-undo"></i> Regresar</button>
+        </div>
+    </form>
+</div>
+
+<!--ngxs-pinner -->
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-atom" [fullScreen]="true">
+    <p style="color: white"> Espera un momento </p>
+</ngx-spinner>

@@ -1,0 +1,38 @@
+<div class="row zona">
+    <h4 class="titulo">Lista de precios</h4>
+</div>
+<div class="row zona">
+    <form class="form-inline col-12 buscador">
+        <div class="form-group col-md-9">
+            <input type="text" (input)="filtrarPrecios($event.target.value)" class="form-control col-12" placeholder="Busca un precio">
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary col-12" routerLink="/agregarPrecio"><i
+                    class="fas fa-plus-circle"></i> Agregar</button>
+        </div>
+    </form>
+    <div class="table-responsive">
+        <table class="table table-hover table-sm table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Costo</th>
+                    <th scope="col">Duración</th>
+                    <th scope="col">Tipo duración</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let precio of precios">
+                    <td>{{precio.nombre}}</td>
+                    <td>{{precio.costo | currency}}</td>
+                    <td>{{precio.duracion}}</td>
+                    <td>{{duraciones[precio.tipo-1].duracion}}</td>
+                    <td>
+                        <i class="fas fa-edit click" [routerLink]="['/editarPrecio/', precio.id]"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

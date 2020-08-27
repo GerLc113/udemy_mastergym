@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="imagen col-lg-8 col-md-7"></div>
+        <div class="login col-lg-4 col-md-5">
+            <h1><i class="fas fa-dumbbell"></i> MasterGym</h1>
+            <form [formGroup]="formulario">
+                <div class="form-group">
+                    <input type="email" formControlName="email" class="form-control" placeholder="Correo electrónico"
+                        (keyup.enter)="login()">
+                    <div *ngIf="formulario.controls['email'].valid && formulario.controls['email'].touched"
+                        class="text-success text-right">
+                        Genial
+                    </div>
+                    <div *ngIf="formulario.controls['email'].invalid && formulario.controls['email'].touched"
+                        class="text-danger text-right">
+                        <span *ngIf="formulario.controls['email'].errors.required">Correo requerido</span>
+                        <span *ngIf="formulario.controls['email'].errors.email">Correo inválido</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input [type]="show_password ? 'text': 'password'" formControlName="password"
+                            class="form-control" placeholder="Contraseña" (keyup.enter)="login()">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-info" (click)="show_password = !show_password" type="button"
+                                id="button-addon2"><i
+                                    [class]="show_password ? 'fas fa-eye-slash' : 'fas fa-eye'"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="formulario.controls['password'].valid && formulario.controls['password'].touched"
+                        class="text-success text-right">
+                        Genial
+                    </div>
+                    <div *ngIf="formulario.controls['password'].invalid && formulario.controls['password'].touched"
+                        class="text-danger text-right">
+                        <span *ngIf="formulario.controls['password'].errors.required">Contraseña requerida</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="button" [disabled]="formulario.invalid" (click)="login()"
+                        class="btn btn-primary col">Iniciar sesión</button>
+                </div>
+            </form>
+        </div>
+
+        <!--ngxs-pinner -->
+        <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-atom" [fullScreen]="true">
+            <p style="color: white"> Espera un momento </p>
+        </ngx-spinner>
+
+    </div>
+</div>

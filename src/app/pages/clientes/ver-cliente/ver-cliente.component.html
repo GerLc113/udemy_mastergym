@@ -1,0 +1,25 @@
+<div class="row zona">
+    <h4 class="titulo">Ver cliente</h4>
+</div>
+
+<div class="zona">
+    <div class="row justify-content-center">
+        <div class="image_outer_container">
+            <div class="image_inner_container">
+                <img [src]="cliente.imagen">
+            </div>
+        </div>
+    </div>
+    <div class="row text-center">
+        <h4 class="col-12">{{cliente.nombre}} {{cliente.apellido}}</h4>
+        <h6 class="col-12"><i class="fas fa-fingerprint"></i> {{cliente.id}}</h6>
+        <div class="col-12"><i class="fas fa-envelope"></i> {{cliente.correo}}</div>
+        <div class="col-12"><i class="fas fa-id-card"></i> {{cliente.ine}}</div>
+        <div class="col-12"><i class="fas fa-phone"></i> {{cliente.telefono}}</div>
+        <div class="col-12"><i class="fas fa-birthday-cake"></i> {{cliente.fecha_nacimiento | date}}</div>
+    </div>
+    <div class="row justify-content-center">
+        <button type="button" (click)="regresar()" class="btn btn-warning col-md-3 botones"><i class="fas fa-undo"></i>
+            Regresar</button>
+    </div>
+</div>

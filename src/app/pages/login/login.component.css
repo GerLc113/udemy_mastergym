@@ -1,0 +1,28 @@
+.imagen{
+    background-image: url('../../../assets/img/fondo_gym.jpg');
+    /* width: calc(100% - 560px); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+}
+
+.container-fluid{
+    height: 100%;
+}
+
+.row{
+    height: 100%;
+    background-color: #ebebeb;
+}
+
+.login{
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+form{
+    margin: 40px 10px 0px 10px;
+}

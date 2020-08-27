@@ -24,9 +24,11 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {
@@ -117,8 +119,16 @@
               "devServerTarget": "mastergym:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
-  "defaultProject": "mastergym"
+    }
+  },
+  "defaultProject": "mastergym",
+  "cli": {
+    "analytics": "52993455-f57e-452a-86cb-868a995a03e5"
+  }
 }

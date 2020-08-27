@@ -1,0 +1,63 @@
+<nav class="navbar navbar-dark bg-primary fixed-top navbar-expand-md">
+    <button class="navbar-toggler" id="btn-expand" type="button" data-toggle="collapse" data-target="#menu-expand"
+        aria-controls="menu-expand" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="menu-expand">
+        <a class="navbar-brand" routerLink="/" (click)="expande()"><i class="fas fa-dumbbell"></i> MasterGym</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a  class="nav-link" (click)="expande()" routerLink="/clientes">Clientes <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownInscripciones" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Inscripciones
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownInscripciones">
+                    <a class="dropdown-item" (click)="expande()">Nueva</a>
+                    <a class="dropdown-item" (click)="expande()">Ver</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-link" (click)="expande()" routerLink="/precios">Precios <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownReportes" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Reportes
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownReportes">
+                    <a class="dropdown-item" (click)="expande()">Suscripciones diarias</a>
+                    <a class="dropdown-item" (click)="expande()">Suscripciones mensuales</a>
+                    <a class="dropdown-item" (click)="expande()">Más vendidas</a>
+
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownUsuarios" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Usuarios
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownUsuarios">
+                    <a class="dropdown-item" (click)="expande()">Nuevo</a>
+                    <a class="dropdown-item" (click)="expande()">Ver</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="text-right">
+        <ul *ngIf="usuario" class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownUsuario" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    {{usuario.email}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownUsuario">
+                    <a class="dropdown-item click" (click)="logout()">Salir</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

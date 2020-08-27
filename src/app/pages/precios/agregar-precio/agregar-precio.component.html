@@ -1,0 +1,77 @@
+<div class="row zona">
+    <h4 class="titulo">Agregar precio</h4>
+</div>
+
+<div class="zona">
+    <form [formGroup]="form_precio">
+        <div class="form-row justify-content-center">
+            <div class="form-group col-md-3">
+                <label for="nombre">Nombre *</label>
+                <input type="text" formControlName="nombre" class="form-control form-control-sm" id="nombre">
+                <div *ngIf="form_precio.controls['nombre'].valid && form_precio.controls['nombre'].touched"
+                    class="text-success text-right">
+                    Genial
+                </div>
+                <div *ngIf="form_precio.controls['nombre'].invalid && form_precio.controls['nombre'].touched"
+                    class="text-danger text-right">
+                    <span *ngIf="form_precio.controls['nombre'].errors.required">Nombre requerido</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row justify-content-center">
+            <div class="form-group col-md-3">
+                <label for="costo">Costo *</label>
+                <input type="number" formControlName="costo" class="form-control form-control-sm" id="costo">
+                <div *ngIf="form_precio.controls['costo'].valid && form_precio.controls['costo'].touched"
+                    class="text-success text-right">
+                    Genial
+                </div>
+                <div *ngIf="form_precio.controls['costo'].invalid && form_precio.controls['costo'].touched"
+                    class="text-danger text-right">
+                    <span *ngIf="form_precio.controls['costo'].errors.required">Costo requerido</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row justify-content-center">
+            <div class="form-group col-md-3">
+                <label for="duracion">Duración *</label>
+                <input type="number" formControlName="duracion" class="form-control form-control-sm" id="duracion">
+                <div *ngIf="form_precio.controls['duracion'].valid && form_precio.controls['duracion'].touched"
+                    class="text-success text-right">
+                    Genial
+                </div>
+                <div *ngIf="form_precio.controls['duracion'].invalid && form_precio.controls['duracion'].touched"
+                    class="text-danger text-right">
+                    <span *ngIf="form_precio.controls['duracion'].errors.required">Duración requerido</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row justify-content-center">
+            <div class="form-group col-md-3">
+                <label for="tipo">Tipo de duración *</label>
+                <select formControlName="tipo" class="form-control form-control-sm" id="tipo">
+                    <option *ngFor="let duracion of duraciones" [value]="duracion.id">{{duracion.duracion}}</option>
+                </select>
+                <div *ngIf="form_precio.controls['tipo'].valid && form_precio.controls['tipo'].touched"
+                    class="text-success text-right">
+                    Genial
+                </div>
+                <div *ngIf="form_precio.controls['tipo'].invalid && form_precio.controls['tipo'].touched"
+                    class="text-danger text-right">
+                    <span *ngIf="form_precio.controls['tipo'].errors.required">Tipo de duración requerido</span>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="button" [disabled]="form_precio.invalid" (click)="enviar()"
+                class="btn btn-primary col-md-3 botones"><i class="fas fa-check-circle"></i> Agregar</button>
+            <button type="button" (click)="regresar()" class="btn btn-warning col-md-3 botones"><i
+                    class="fas fa-undo"></i> Regresar</button>
+        </div>
+    </form>
+</div>
+
+<!--ngxs-pinner -->
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-atom" [fullScreen]="true">
+    <p style="color: white"> Espera un momento </p>
+</ngx-spinner>

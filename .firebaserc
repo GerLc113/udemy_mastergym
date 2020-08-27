@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "gersoft-3604c": {
+      "hosting": {
+        "mastergym": [
+          "gersoft-3604c"
+        ]
+      }
+    }
+  }
+}
