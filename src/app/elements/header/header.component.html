@@ -9,15 +9,8 @@
             <li class="nav-item">
                 <a  class="nav-link" (click)="expande()" routerLink="/clientes">Clientes <span class="sr-only"></span></a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownInscripciones" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Inscripciones
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownInscripciones">
-                    <a class="dropdown-item" (click)="expande()">Nueva</a>
-                    <a class="dropdown-item" (click)="expande()">Ver</a>
-                </div>
+            <li class="nav-item">
+                <a  class="nav-link" (click)="expande()" routerLink="/">Inscripción <span class="sr-only"></span></a>
             </li>
             <li class="nav-item">
                 <a  class="nav-link" (click)="expande()" routerLink="/precios">Precios <span class="sr-only"></span></a>
@@ -32,16 +25,6 @@
                     <a class="dropdown-item" (click)="expande()">Suscripciones mensuales</a>
                     <a class="dropdown-item" (click)="expande()">Más vendidas</a>
 
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownUsuarios" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Usuarios
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownUsuarios">
-                    <a class="dropdown-item" (click)="expande()">Nuevo</a>
-                    <a class="dropdown-item" (click)="expande()">Ver</a>
                 </div>
             </li>
         </ul>

@@ -4,7 +4,7 @@
 <div class="row zona">
     <form class="form-inline col-12 buscador">
         <div class="form-group col-md-9">
-            <input type="text" (input)="filtrarPrecios($event.target.value)" class="form-control col-12" placeholder="Busca un precio">
+            <input type="text"  [(ngModel)]="filtro" name="filtro" class="form-control col-12" placeholder="Busca un precio">
         </div>
         <div class="col-md-3">
             <button type="submit" class="btn btn-primary col-12" routerLink="/agregarPrecio"><i
@@ -23,7 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let precio of precios">
+                <tr *ngFor="let precio of precios | filtraDatos: {nombre: filtro, costo: filtro} : false">
                     <td>{{precio.nombre}}</td>
                     <td>{{precio.costo | currency}}</td>
                     <td>{{precio.duracion}}</td>

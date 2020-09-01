@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MensajesService } from "../../../services/mensajes/mensajes.service";
 import { Location } from "@angular/common";
+import { Duracion } from "../../../models/duracion";
+import { DuracionesService } from "../../../services/duraciones/duraciones.service";
 
 @Component({
   selector: 'app-agregar-precio',
@@ -11,23 +13,19 @@ import { Location } from "@angular/common";
   styleUrls: ['./agregar-precio.component.css']
 })
 export class AgregarPrecioComponent implements OnInit {
-  duraciones: any[] = new Array<any>();
+  duraciones: Duracion[] = [];
   form_precio: FormGroup;
 
   constructor(private fb: FormBuilder, private afs: AngularFirestore, private spinner: NgxSpinnerService,
-    private mensaje: MensajesService, private location: Location) {
-    afs.collection('duraciones').get().subscribe((respuesta) => {
-      respuesta.docs.forEach((item) => {
-        let duracion = item.data();
-        duracion.id = item.id;
-        duracion.ref = item.ref;
-        this.duraciones.push(duracion);
-      });
-    });
-   }
+    private mensaje: MensajesService, private location: Location, private duracionServicio: DuracionesService) { }
 
   ngOnInit(): void {
+    this.obtenDuraciones();
     this.iniciaFormulario();
+  }
+
+  obtenDuraciones(): void {
+    this.duraciones = this.duracionServicio.obtenDuraciones();
   }
 
   iniciaFormulario(): void {
@@ -54,5 +52,5 @@ export class AgregarPrecioComponent implements OnInit {
   regresar(): void {
     this.location.back();
   }
-  
+
 }

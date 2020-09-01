@@ -23,6 +23,10 @@ import { CortaNombrePipe } from './pipes/corta-nombre/corta-nombre.pipe';
 import { VerClienteComponent } from './pages/clientes/ver-cliente/ver-cliente.component';
 import { ListaPreciosComponent } from './pages/precios/lista-precios/lista-precios.component';
 import { AgregarPrecioComponent } from './pages/precios/agregar-precio/agregar-precio.component';
+import { EditarPrecioComponent } from './pages/precios/editar-precio/editar-precio.component';
+import { InscripcionComponent } from './pages/inscripcion/inscripcion.component';
+import { ClientesService } from "./services/clientes/clientes.service";
+import { FiltraDatosPipe } from './pipes/filtra-datos/filtra-datos.pipe';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,10 @@ import { AgregarPrecioComponent } from './pages/precios/agregar-precio/agregar-p
     CortaNombrePipe,
     VerClienteComponent,
     ListaPreciosComponent,
-    AgregarPrecioComponent
+    AgregarPrecioComponent,
+    EditarPrecioComponent,
+    InscripcionComponent,
+    FiltraDatosPipe
   ],
   imports: [
     BrowserModule,
@@ -52,7 +59,8 @@ import { AgregarPrecioComponent } from './pages/precios/agregar-precio/agregar-p
   ],
   providers: [
     AngularFireAuth,
-    MensajesService
+    MensajesService,
+    ClientesService
   ],
   bootstrap: [AppComponent]
 })

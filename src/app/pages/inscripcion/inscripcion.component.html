@@ -1,0 +1,152 @@
+<div class="row zona">
+    <h4 class="titulo">Inscripción</h4>
+</div>
+
+<div class="zona">
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label for="cliente" class="col-md-2 col-form-label col-form-label-md">Cliente</label>
+            <div class="col-12">
+                <input type="text" class="form-control form-control-sm click" id="cliente" readonly
+                    [value]="cliente_select ? cliente_select.nombre_completo: 'Selecciona un cliente'"
+                    data-toggle="modal" data-target="#modalCliente">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="duracion" class="col-md-2 col-form-label col-form-label-md">Precio</label>
+            <div class="col-12">
+                <select class="custom-select custom-select-sm" (change)="seleccionaPrecio($event.target.value)">
+                    <option selected [value]="0">Selecciona un precio</option>
+                    <option *ngFor="let precio of precios" [value]="precio.id">{{precio.nombre}} -
+                        {{precio.costo | currency}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="card col-12">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6" *ngIf="cliente_select">
+                    <div class="row">
+                        <div class="image_outer_container">
+                            <div class="image_inner_container">
+                                <img [src]="cliente_select.imagen">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h4 class="col-12">{{cliente_select.nombre_completo}}</h4>
+                        <h6 class="col-12"><i class="fas fa-fingerprint"></i> {{cliente_select.id}}</h6>
+                        <div class="col-12"><i class="fas fa-envelope"></i> {{cliente_select.correo}}</div>
+                        <div class="col-12"><i class="fas fa-id-card"></i> {{cliente_select.ine}}</div>
+                        <div class="col-12"><i class="fas fa-phone"></i> {{cliente_select.telefono}}</div>
+                        <div class="col-12"><i class="fas fa-birthday-cake"></i>
+                            {{cliente_select.fecha_nacimiento | date}}</div>
+                    </div>
+                </div>
+                <div class="col-md-6" *ngIf="precio_select">
+                    <h4 class="col-12">{{precio_select.nombre}}</h4>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="fecha_inicial" class="col-md-6 col-form-label col-form-label-md">Inicio</label>
+                            <div class="col-12">
+                                <input type="text" class="form-control form-control-sm" id="fecha_inicial" readonly
+                                    [value]="inscripcion.fecha_inicial | date">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="fecha_final" class="col-md-6 col-form-label col-form-label-md">Fin</label>
+                            <div class="col-12">
+                                <input type="text" class="form-control form-control-sm" id="fecha_final" readonly
+                                    [value]="inscripcion.fecha_final | date">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="subtotal" class="col-md-6 col-form-label col-form-label-md">Subtotal</label>
+                            <div class="col-12">
+                                <input type="text" class="form-control form-control-sm" id="subtotal" readonly
+                                    [value]="inscripcion.subtotal | currency">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="iva" class="col-md-6 col-form-label col-form-label-md">IVA</label>
+                            <div class="col-12">
+                                <input type="text" class="form-control form-control-sm" id="iva" readonly
+                                    [value]="inscripcion.iva | currency">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="total" class="col-md-6 col-form-label col-form-label-md">Total</label>
+                            <div class="col-12">
+                                <input type="text" class="form-control form-control-sm" id="total" readonly
+                                    [value]="inscripcion.total | currency">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 text-right" *ngIf="cliente_select && precio_select">
+        <button type="button" (click)="guardaInscripcion()" class="btn btn-success col-md-12"><i
+                class="fas fa-save"></i> Guardar</button>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modalCliente" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="modalClienteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalClienteLabel">Selecciona un cliente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-inline col-12 buscador">
+                    <div class="form-group col-12">
+                        <input type="text" [(ngModel)]="filtro" name="filtro" class="form-control col-12"
+                            placeholder="Buscar cliente">
+                    </div>
+                </form>
+                <div class="table-responsive">
+                    <table class="table table-hover table-sm table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Cliente</th>
+                                <th scope="col">Seleccionar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="let cliente of clientes | filtraDatos: {nombre: filtro, apellido: filtro} : false">
+                                <td>{{cliente.nombre_completo}}</td>
+                                <td>
+                                    <i class="fas fa-check-circle click" (click)="seleccionaCliente(cliente)"
+                                        data-dismiss="modal"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle"></i>
+                    Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--ngxs-pinner -->
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-atom" [fullScreen]="true">
+    <p style="color: white"> Espera un momento </p>
+</ngx-spinner>
