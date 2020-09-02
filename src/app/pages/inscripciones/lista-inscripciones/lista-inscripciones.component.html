@@ -1,0 +1,36 @@
+<div class="row zona">
+    <h4 class="titulo">Inscripciones</h4>
+</div>
+<div class="row zona">
+    <form class="form-inline col-12 buscador">
+        <div class="form-group col-md-9">
+            <input type="text" [(ngModel)]="filtro" name="filtro" class="form-control col-12"
+                placeholder="Busca inscripción">
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary col-12" routerLink="/inscripcion"><i
+                    class="fas fa-plus-circle"></i> Agregar</button>
+        </div>
+    </form>
+    <div *ngIf="inscripciones.length > 0" class="table-responsive">
+        <table class="table table-hover table-sm table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Fecha finalización</th>
+                    <th scope="col">Costo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let inscripcion of inscripciones">
+                    <td *ngIf="inscripcion.cliente_data">{{inscripcion.cliente_data.nombre}}
+                        {{inscripcion.cliente_data.apellido}}</td>
+                    <td *ngIf="inscripcion.precio_data">{{inscripcion.precio_data.nombre}}</td>
+                    <td>{{inscripcion.fecha_final | date}}</td>
+                    <td>{{inscripcion.total | currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

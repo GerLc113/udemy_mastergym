@@ -18,7 +18,7 @@ export class ClientesService {
         cliente.id = item.id;
         cliente.ref = item.ref;
         cliente.nombre_completo = cliente.nombre + ' ' + cliente.apellido;
-        cliente.fecha_nacimiento = new Date(cliente.fecha_nacimiento.seconds * 1000).toISOString().substr(0, 10)
+        cliente.fecha_nacimiento = new Date(cliente.fecha_nacimiento.seconds * 1000).toISOString().substr(0, 10);
         this.clientes.push(cliente);
       });
     });

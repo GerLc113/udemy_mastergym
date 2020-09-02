@@ -10,11 +10,13 @@ import { VerClienteComponent } from './pages/clientes/ver-cliente/ver-cliente.co
 import { ListaPreciosComponent } from './pages/precios/lista-precios/lista-precios.component';
 import { AgregarPrecioComponent } from './pages/precios/agregar-precio/agregar-precio.component';
 import { EditarPrecioComponent } from './pages/precios/editar-precio/editar-precio.component';
-import { InscripcionComponent } from './pages/inscripcion/inscripcion.component';
+import { InscripcionComponent } from './pages/inscripciones/inscripcion/inscripcion.component';
+import { ListaInscripcionesComponent } from './pages/inscripciones/lista-inscripciones/lista-inscripciones.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'inscripcion', pathMatch: 'full' },
   { path: 'inscripcion', component: InscripcionComponent },
+  { path: 'inscripciones', component: ListaInscripcionesComponent },
   { path: 'clientes', component: ListaClientesComponent },
   { path: 'nuevoCliente', component: NuevoClienteComponent },
   { path: 'editarCliente/:id', component: EditarClienteComponent },

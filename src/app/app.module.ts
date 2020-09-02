@@ -18,15 +18,21 @@ import { ListaClientesComponent } from './pages/clientes/lista-clientes/lista-cl
 import { Error404Component } from './pages/error404/error404.component';
 import { NuevoClienteComponent } from './pages/clientes/nuevo-cliente/nuevo-cliente.component';
 import { EditarClienteComponent } from './pages/clientes/editar-cliente/editar-cliente.component';
-import { MensajesService } from "./services/mensajes/mensajes.service";
+
 import { CortaNombrePipe } from './pipes/corta-nombre/corta-nombre.pipe';
 import { VerClienteComponent } from './pages/clientes/ver-cliente/ver-cliente.component';
 import { ListaPreciosComponent } from './pages/precios/lista-precios/lista-precios.component';
 import { AgregarPrecioComponent } from './pages/precios/agregar-precio/agregar-precio.component';
 import { EditarPrecioComponent } from './pages/precios/editar-precio/editar-precio.component';
-import { InscripcionComponent } from './pages/inscripcion/inscripcion.component';
-import { ClientesService } from "./services/clientes/clientes.service";
+import { InscripcionComponent } from './pages/inscripciones/inscripcion/inscripcion.component';
 import { FiltraDatosPipe } from './pipes/filtra-datos/filtra-datos.pipe';
+import { ListaInscripcionesComponent } from './pages/inscripciones/lista-inscripciones/lista-inscripciones.component';
+
+import { ClientesService } from "./services/clientes/clientes.service";
+import { MensajesService } from "./services/mensajes/mensajes.service";
+import { DuracionesService } from "./services/duraciones/duraciones.service";
+import { InscripcionesService } from "./services/inscripciones/inscripciones.service";
+import { PreciosService } from "./services/precios/precios.service";
 
 @NgModule({
   declarations: [
@@ -43,7 +49,8 @@ import { FiltraDatosPipe } from './pipes/filtra-datos/filtra-datos.pipe';
     AgregarPrecioComponent,
     EditarPrecioComponent,
     InscripcionComponent,
-    FiltraDatosPipe
+    FiltraDatosPipe,
+    ListaInscripcionesComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +67,10 @@ import { FiltraDatosPipe } from './pipes/filtra-datos/filtra-datos.pipe';
   providers: [
     AngularFireAuth,
     MensajesService,
-    ClientesService
+    ClientesService,
+    DuracionesService,
+    InscripcionesService,
+    PreciosService
   ],
   bootstrap: [AppComponent]
 })

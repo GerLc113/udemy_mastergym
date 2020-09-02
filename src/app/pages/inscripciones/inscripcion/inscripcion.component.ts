@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from "../../models/cliente";
-import { ClientesService } from "../../services/clientes/clientes.service";
-import { Precio } from "../../models/precio";
-import { PreciosService } from "../../services/precios/precios.service";
-import { Inscripcion } from "../../models/inscripcion";
+import { Cliente } from "../../../models/cliente";
+import { ClientesService } from "../../../services/clientes/clientes.service";
+import { Precio } from "../../../models/precio";
+import { PreciosService } from "../../../services/precios/precios.service";
+import { Inscripcion } from "../../../models/inscripcion";
 import { NgxSpinnerService } from 'ngx-spinner';
-import { MensajesService } from "../../services/mensajes/mensajes.service";
+import { MensajesService } from "../../../services/mensajes/mensajes.service";
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({

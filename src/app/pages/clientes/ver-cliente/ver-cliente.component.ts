@@ -42,7 +42,7 @@ export class VerClienteComponent implements OnInit {
     this.afs.doc<Cliente>('clientes/' + id).valueChanges().subscribe((cliente) => {
       this.cliente = cliente;
       this.cliente.id = this.id_cliente;
-      this.cliente.fecha_nacimiento = new Date(this.cliente.fecha_nacimiento.seconds * 1000).toISOString().substr(0, 10)
+      this.cliente.fecha_nacimiento = new Date(this.cliente.fecha_nacimiento.seconds * 1000).toISOString().substr(0, 10);
     });
   }
 
